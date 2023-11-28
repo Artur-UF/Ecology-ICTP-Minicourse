@@ -16,19 +16,24 @@ B = 1   Small
 int main(int argc, char *argv[]){
     double uniform(double min, double max);
 
+    // Setting parameters
     double rhoa = atof(argv[1]);
     double gb = atof(argv[2]);
 
     // Creating system array
     int *sys = (int*)malloc(N*sizeof(int));
 
+    // Creating output file
     char name[50];
     sprintf(name, "avg_rhoa_%.2lf_gb_%.2lf.dat", rhoa, gb);
     
     FILE *out = fopen(name, "w");
 
-    int node, nn, numB;
+    // Creating array for the averages
     double *avgnumB = (double*)calloc(TT, sizeof(double));
+
+    // Simulation
+    int node, nn, numB;
 
     for(int sim = 0; sim < NSIM; ++sim){
         // Inicial condition
@@ -63,12 +68,14 @@ int main(int argc, char *argv[]){
             else{
                 if(uniform(0., 1.) < gb) sys[(int)uniform(0, N)] = 1;
             }
+
             for(int i = 0; i < N; ++i) numB += sys[1];
             avgnumB[t] += numB;
             numB = 0;
         }
     }
 
+    // Saving averages
     for(int i = 0; i < TT; ++i){
         avgnumB[i] /= NSIM;
         fprintf(out, "%lf\n", avgnumB[i]);
