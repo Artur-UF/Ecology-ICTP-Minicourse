@@ -3,7 +3,7 @@
 #include <time.h>
 #include <math.h>
 
-#define N 300       // Size of system
+#define N 500       // Size of system
 #define TT 100000       // Iterations
 #define NSIM 500       // # of sims
 
