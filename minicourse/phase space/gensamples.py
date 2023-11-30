@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import sys
 import os
 
@@ -11,7 +10,7 @@ rhoa = np.linspace(.1, 1., 30)
 
 for g in gb:
     for r in rhoa:
-        print(f'rhoa: {r} | gb: {g}', end='\r')
+        print(f'rhoa: {r:.4f} | gb: {g:.4f}', end='\r')
         os.system(f'./fast {r} {g}')
 print()
 

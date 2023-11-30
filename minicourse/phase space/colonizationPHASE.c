@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
             }
     
             for(int i = 0; i < N; ++i) numB += sys[i];
-            if(numB == 100 || numB == 0) break;
+            if(numB == N || numB == 0) break;
             else numB = 0;
         }
         wins[sim] = numB;
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]){
 
     double w = 0;
     for(int i = 0; i < NSIM; ++i){
-        w = (wins[i] == 100) ? w + 1 : w ;
+        w = (wins[i] == N) ? w + 1 : w ;
     }
     fprintf(out, "%lf\n", (double)w/NSIM);
 

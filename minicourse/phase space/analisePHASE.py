@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-N = 33300
+N = 300
 d = 30 
 
 wins = np.loadtxt(f'samples/wins_N_{N}.dat', unpack=True)
