@@ -33,6 +33,7 @@ for i in range(9):
     numA.append(N - numB[i])
 
 
+plt.figure(layout='constrained')
 for i, r in zip(range(9), np.arange(.1, 1., .1)):
     plt.plot(numA[i], label=r'$\rho_{A} = $'+f'{r:.2f}')
 plt.legend(loc='upper right')

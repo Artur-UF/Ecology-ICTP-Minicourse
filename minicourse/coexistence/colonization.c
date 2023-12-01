@@ -3,8 +3,8 @@
 #include <time.h>
 #include <math.h>
 
-#define N 1e+3       // Size of system
-#define TT 100000       // Iterations
+#define N 1e+4       // Size of system
+#define TT 15000000       // Iterations
 
 
 /*
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
     int *sys = (int*)malloc(N*sizeof(int));
    
     char nome[50];
-    sprintf(nome, "N_%d/vid_N_%d_rhoa_%.2lf.dat", (int)N, (int)N, RHOA);
+    sprintf(nome, "out_N_%d_rhoa_%.2lf_T_%d.dat", (int)N, RHOA, TT);
 
     FILE *out = fopen(nome, "w");
 
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
             if(uniform(0., 1.) < gb) sys[dis] = 1;
         }
 
-        if(t >= 40000 && t <= 50000){
+        if(t%10000 == 0){
             for(int i = 0; i < N; ++i) fprintf(out, "%d\n", sys[i]);
             fprintf(out, "-1\n");
         }

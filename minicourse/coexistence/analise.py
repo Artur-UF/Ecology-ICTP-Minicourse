@@ -17,10 +17,11 @@ def split(array, flag):
     return arrnd[:-1]
 
 N = 10000
-order = 2 
+order = 3 
+T = 15000000
 
 rhoa = float(sys.argv[1])
-sys = np.loadtxt(f'out_N_{N}_rhoa_{rhoa:.2f}.dat', unpack=True)
+sys = np.loadtxt(f'N_{N}/out_N_{N}_rhoa_{rhoa:.2f}_ga_0.dat', unpack=True)
 
 sys = np.asarray(split(sys, -1))
 
@@ -28,7 +29,7 @@ sys = np.asarray(split(sys, -1))
 numB = np.sum(sys, 1)
 numA = N - numB 
 
-
+plt.figure(layout='constrained')
 plt.plot(numA, label='A')
 plt.plot(numB, label='B')
 plt.legend()
@@ -36,6 +37,6 @@ plt.xlabel(f't(10^{order})')
 plt.ylabel(r'$N_{A,B}$')
 plt.title(f'N = {N} '+r'$\mid \rho_{A} = $'+f'{rhoa:.2f}')
 plt.ylim(0, N)
-plt.savefig(f'nums_N_{N}_rhoa_{rhoa:.2f}.png', dpi=400)
+plt.savefig(f'N_{N}/nums_N_{N}_rhoa_{rhoa:.2f}_ga_0.png', dpi=400)
 #plt.show()
 
