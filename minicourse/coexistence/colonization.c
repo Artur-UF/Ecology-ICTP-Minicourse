@@ -4,7 +4,7 @@
 #include <math.h>
 
 #define N 1e+4       // Size of system
-#define TT 15000000       // Iterations
+#define TT 1e+9       // Iterations
 
 
 /*
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
     int *sys = (int*)malloc(N*sizeof(int));
    
     char nome[50];
-    sprintf(nome, "out_N_%d_rhoa_%.2lf_T_%d.dat", (int)N, RHOA, TT);
+    sprintf(nome, "out_N_%d_rhoa_%.2lf_bi.dat", (int)N, RHOA);
 
     FILE *out = fopen(nome, "w");
 
@@ -49,14 +49,14 @@ int main(int argc, char *argv[]){
             // Right neighbour
             if(nn){
                 if(sys[mtx[mtx[node][0]][0]] == 1) ga = 1.;
-                else ga = .3; //uniform(0.1, .5);                
+                else ga = .5; //uniform(0.1, .5);                
                 if(uniform(0., 1.) < ga) sys[mtx[node][0]] = 0;
             }
 
             // Left neighbour
             else{
                 if(sys[mtx[mtx[node][1]][1]] == 1) ga = 1.;
-                else ga = .3; //uniform(0.1, .5);                
+                else ga = .5; //uniform(0.1, .5);                
                 if(uniform(0., 1.) < ga) sys[mtx[node][1]] = 0;
             }
         }
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
             if(uniform(0., 1.) < gb) sys[dis] = 1;
         }
 
-        if(t%10000 == 0){
+        if(t%1000000 == 0){
             for(int i = 0; i < N; ++i) fprintf(out, "%d\n", sys[i]);
             fprintf(out, "-1\n");
         }
