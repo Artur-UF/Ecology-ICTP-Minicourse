@@ -16,12 +16,12 @@ def split(array, flag):
     arrnd.append(a)
     return arrnd[:-1]
 
-N = 1000
-order = 2 
+N = 10000
+order = 3 
 
 sys = list()
 for i, r in zip(range(9), np.arange(.1, 1., .1)):
-    sys.append(np.loadtxt(f'N_{N}/out_N_{N}_rhoa_{r:.2f}.dat', unpack=True))
+    sys.append(np.loadtxt(f'N_{N}/out_N_{N}_rhoa_{r:.2f}_ga_0.dat', unpack=True))
 
 for i in range(9):
     sys[i] = np.asarray(split(sys[i], -1))
@@ -35,12 +35,12 @@ for i in range(9):
 
 plt.figure(layout='constrained')
 for i, r in zip(range(9), np.arange(.1, 1., .1)):
-    plt.plot(numA[i], label=r'$\rho_{A} = $'+f'{r:.2f}')
+    plt.plot(numA[i][:150], label=r'$\rho_{A} = $'+f'{r:.2f}')
 plt.legend(loc='upper right')
 plt.xlabel(f't(10^{order})')
 plt.ylabel(r'$N_{A}$')
 plt.title(f'N = {N} ')
 plt.ylim(0, N)
-plt.savefig(f'N_{N}/plot_N_{N}_ga_0.3.png', dpi=400)
+plt.savefig(f'N_{N}/plot_N_{N}_ga_0.png', dpi=400)
 #plt.show()
 
