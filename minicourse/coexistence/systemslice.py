@@ -24,7 +24,8 @@ sys = np.loadtxt(f'N_{N}/vid_N_{N}_rhoa_{rhoa:.2f}.dat', unpack=True)
 
 sys = np.asarray(split(sys, -1))
 
-
+plt.imshow(sys)
+plt.savefig(f'video/f1.png', dpi=400)
 
 
 
