@@ -1,0 +1,41 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import sys
+
+def split(array, flag):
+    '''
+    Faz a separação de um array numérico de acordo com uma flag numérica
+    '''
+    arrnd = list()
+    a = list()
+    for i in range(len(array)):
+        if array[i] == flag and type(flag) == int:
+            arrnd.append(a)
+            a = list()
+        else: a.append(array[i])
+    arrnd.append(a)
+    return arrnd[:-1]
+
+N = 10000
+order = 2 
+
+rhoa = float(sys.argv[1])
+sys = np.loadtxt(f'out_N_{N}_rhoa_{rhoa:.2f}.dat', unpack=True)
+
+sys = np.asarray(split(sys, -1))
+
+
+numB = np.sum(sys, 1)
+numA = N - numB 
+
+
+plt.plot(numA, label='A')
+plt.plot(numB, label='B')
+plt.legend()
+plt.xlabel(f't(10^{order})')
+plt.ylabel(r'$N_{A,B}$')
+plt.title(f'N = {N} '+r'$\mid \rho_{A} = $'+f'{rhoa:.2f}')
+plt.ylim(0, N)
+plt.savefig(f'nums_N_{N}_rhoa_{rhoa:.2f}.png', dpi=400)
+#plt.show()
+

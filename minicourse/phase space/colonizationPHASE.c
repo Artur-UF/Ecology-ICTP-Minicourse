@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.>
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]){
     }
     fprintf(out, "%lf\n", (double)w/NSIM);
 
-
+    fclose(out);
     return 0;
 }
 
