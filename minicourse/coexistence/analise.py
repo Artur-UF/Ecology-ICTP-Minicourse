@@ -16,8 +16,8 @@ def split(array, flag):
     arrnd.append(a)
     return arrnd[:-1]
 
-N = 1000
-order = 2
+N = 10000
+order = 5
 T = 15000000
 
 rhoa = float(sys.argv[1])
@@ -37,6 +37,6 @@ plt.xlabel(f't(10^{order})')
 plt.ylabel(r'$N_{A,B}$')
 plt.title(f'N = {N} '+r'$\mid \rho_{A} = $'+f'{rhoa:.2f}')
 plt.ylim(0, N)
-plt.savefig(f'N_{N}/nums_N_{N}_rhoa_{rhoa:.2f}_ga_0.3.png', dpi=400)
+plt.savefig(f'nums_N_{N}_rhoa_{rhoa:.2f}_ga_0.3.png', dpi=400)
 #plt.show()
 

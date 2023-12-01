@@ -4,7 +4,7 @@
 #include <math.h>
 
 #define N 1e+4       // Size of system
-#define TT 1e+9       // Iterations
+#define TT 1e+9     // Iterations
 
 
 /*
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
     int *sys = (int*)malloc(N*sizeof(int));
    
     char nome[50];
-    sprintf(nome, "out_N_%d_rhoa_%.2lf_bi.dat", (int)N, RHOA);
+    sprintf(nome, "out_N_%d_rhoa_%.2lf_ga_0.3.dat", (int)N, RHOA);
 
     FILE *out = fopen(nome, "w");
 
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
             if(uniform(0., 1.) < gb) sys[dis] = 1;
         }
 
-        if(t%1000000 == 0){
+        if(t%10000000 == 0){
             for(int i = 0; i < N; ++i) fprintf(out, "%d\n", sys[i]);
             fprintf(out, "-1\n");
         }
